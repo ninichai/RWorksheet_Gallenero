@@ -50,12 +50,12 @@ summary(Household_data)
 # the data frame has 6 variables (columns) and 20 observations (rows).
 
 
-# respondents - a numeric identifier for each respondent
+# respondents - a numeric identifier for each respondent
 # sex - (1 for male, 2 for female) indicates the respondent's gender.
 # occupation of father - shows the occupation of the father (1 for farmer, 2 for driver, 3 for others).
-# persons at home - displays the number of people at home.
-# siblings at school - the number of siblings at the school.
-# type of house - defines the type of house (1 for wood, 2 for semi-concrete, 3 for concrete).
+# persons at home- displays the number of people at home.
+# siblings at school- the number of siblings at the school.
+# type of house- defines the type of house (1 for wood, 2 for semi-concrete, 3 for concrete).
 
 #1.c
 sibs_schl_mean <- mean(Household_data$SiblingsAtSchool)
