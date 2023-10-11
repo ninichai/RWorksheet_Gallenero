@@ -21,8 +21,6 @@ You can also embed plots, for example:
 plot(pressure)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
 ```{r}
 #1.a Create a data frame
 respondents_number <- c(1:20)
@@ -48,16 +46,16 @@ Household_data
 str(Household_data)
 summary(Household_data)
 
-# the data frame consists of 20 observations(rows) and 6 variables (columns)
-# the data frame consists of 6 variables (colums) with 20 observations(rows)
+# There are 20 observations (rows) and 6 variables (columns) in the data frame.
+# the data frame has 6 variables (columns) and 20 observations (rows).
 
 
-# respondents - which contains a numeric identifier for each respondent
-# sex -(1 for male, 2 for female)it represents the gender of the respondent
-# father's occupation - indicates the occupation of father (1 for farmer, 2 for driver, 3 for others)
-# persons at home - shows the number of people at home
-# siblings at school - indicates the number of siblings at the school
-# type of house - describes the house type (1 for wood, 2 for semi-concrete, 3 for concrete)
+# respondents - a numeric identifier for each respondent
+# sex - (1 for male, 2 for female) indicates the respondent's gender.
+# occupation of father - shows the occupation of the father (1 for farmer, 2 for driver, 3 for others).
+# persons at home - displays the number of people at home.
+# siblings at school - the number of siblings at the school.
+# type of house - defines the type of house (1 for wood, 2 for semi-concrete, 3 for concrete).
 
 #1.c
 sibs_schl_mean <- mean(Household_data$SiblingsAtSchool)
@@ -90,7 +88,6 @@ female_Respondent
 
 
 
-# there are five observations
 
 # 2
 df = data.frame(Ints=integer(),
@@ -113,7 +110,6 @@ print(str(df))
 #(0 levels which means empty)
 
 # can be serve as a template that can be populated with data
-
 
 
 # 3
@@ -178,16 +174,17 @@ greater_five
 
 
 #4
-# On this day, July 14 the negative sentiments has the most among the other sentiments. This means that some topics or events received negative sentiments during that day
+# On this day, July 14, negative sentiments surpass all other sentiments. This signifies that some topics or occurrences got negative sentiments on that specific day.
 
-# On this day, July 15 the negative sentiment is still at the highest even if all the sentiments increased. This can be assumed that something occured that set off negative sentiments on that day.
+# On this day, July 15 the negative sentiment is still at the highest even if all the sentiments increased. This implies that something happened on that day that created negative sentiments.
 
-# On these days, July 17 and July 18 negative sentiments remains high and both neutral and positive sentiments stays similar
+# On these days, July 17 and 18, negative sentiments are still high, whereas neutral and positive sentiments are similar.
 
-# On the day, July 20 all sentiments got to their lowest even so there were still more negative sentiments among the others.This shows that during that day nothing happened.
+# On July 20, all sentiments reached their lowest point, despite the fact that there were still more negative sentiments among the others. This demonstrates that nothing happened on that day.
 
-# On this day July 21, all sentiments increases, still the negative being at the top. This could mean that day something occured that set off negative responses of the people.
+# On July 21, all sentiments increase, with the negative remaining at the top. This could imply that something happened that day that triggered people's negative responses.
 
-# From this data, we could come to the conclusion that public sentiment is responsive to external factors and it also varies as the days go by.
+# Based on this data, we may conclude that public sentiment is prone to external forces and varies over time.
+
 
 ```
