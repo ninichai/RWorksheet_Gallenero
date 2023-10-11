@@ -1,0 +1,193 @@
+---
+title: "RWorksheet_Gallenero#3b"
+output: pdf_document
+date: "2023-10-11"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+#1.a Create a data frame
+respondents_number <- c(1:20)
+sex <- c(2,2,1,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,1,2)
+father_occ <- c(1,3,3,3,1,2,3,1,1,1,3,2,1,3,3,1,3,1,2,1)
+person_home <- c(5,7,3,8,5,9,6,7,8,4,7,5,4,7,8,8,3,11,7,6)
+sibs_schl <- c(6,4,4,1,2,1,5,3,1,2,3,2,5,5,2,1,2,5,3,2)
+house_type<- c(1,2,3,1,1,3,3,1,2,3,2,3,2,2,3,3,3,3,3,2)
+
+
+Household_data <- data.frame(
+  Respondents = respondents_number,
+  Sex = sex,
+  FatherOccupation = father_occ,
+  PersonAtHome = person_home,
+  SiblingsAtSchool = sibs_schl,
+  TypesOfHouses = house_type
+)
+Household_data
+
+#1.b 
+
+str(Household_data)
+summary(Household_data)
+
+# the data frame consists of 20 observations(rows) and 6 variables (columns)
+# the data frame consists of 6 variables (colums) with 20 observations(rows)
+
+
+# respondents - which contains a numeric identifier for each respondent
+# sex -(1 for male, 2 for female)it represents the gender of the respondent
+# father's occupation - indicates the occupation of father (1 for farmer, 2 for driver, 3 for others)
+# persons at home - shows the number of people at home
+# siblings at school - indicates the number of siblings at the school
+# type of house - describes the house type (1 for wood, 2 for semi-concrete, 3 for concrete)
+
+#1.c
+sibs_schl_mean <- mean(Household_data$SiblingsAtSchool)
+sibs_schl_mean
+
+# no, it is not 5 because the mean of siblings at school is 2.95
+
+#1.d
+first_Two_rows <- Household_data[1:2,]
+first_Two_rows
+
+#1.e
+extract_rows <- Household_data[c(3,5),c(2,4)]
+extract_rows
+
+#1.f
+types_Houses <- Household_data$TypesOfHouses
+types_Houses
+
+#1.g
+male_FatherFarmer <- Household_data[Household_data$Sex == 1 & Household_data$FatherOccupation == 1,]
+
+male_FatherFarmer
+
+
+#1.h
+
+female_Respondent <- Household_data[Household_data$SiblingsAtSchool >= 5,]
+female_Respondent
+
+
+
+# there are five observations
+
+# 2
+df = data.frame(Ints=integer(),
+                Doubles=double(), Characters=character(),
+                Logicals=logical(),
+                Factors=factor(),
+                stringsAsFactors=FALSE
+)
+
+print("Structure of the empty dataframe:")
+print(str(df))
+
+# df have a empty data frame with 0 rows and 5 columns
+# the columns has the following data type:
+# ints = integer
+# doubles = double
+# characters = character
+# logicals = logical
+# factors  = factor
+#(0 levels which means empty)
+
+# can be serve as a template that can be populated with data
+
+
+
+# 3
+
+new_respondents <- c(1,2,3,4,5,6,7,8,9,10)
+new_sex <- c("Male", "Female", "Female", "Male", "Male", "Female", "Female", "Male", "Female", "Male")
+new_fatherocc <- c(1,2,3,3,1,2,2,3,1,3)
+new_persons <- c(5,7,3,8,6,4,4,2,11,6)
+new_sibs <- c(2,3,0,5,2,3,1,2,6,2)
+new_type <- c("Wood", "Congrete", "Congrete", "Wood", "Semi-congrete", "Semi-congrete", "Wood", "Semi-congrete", "Semi-congrete", "Congrete")
+
+Household_Data <- data.frame(
+  Respondents = new_respondents,
+  Sex = new_sex,
+  FatherOccupation = new_fatherocc,
+  PersonsAtHome = new_persons,
+  SiblingsAtSchool = new_sibs,
+  HouseType = new_type
+)
+Household_Data
+
+write.csv(Household_Data, file = "HouseholdData.csv")
+
+#3a
+
+imported <-  read.csv("HouseholdData.csv")
+imported
+
+#3b
+
+imported$Sex <- factor(imported$Sex, levels = c("Male", "Female"))
+imported$Sex <- as.integer(imported$Sex)
+
+imported$Sex
+
+#output: 1 2 2 1 1 2 2 1 2 1
+
+#3c
+
+imported$HouseType <- factor(imported$HouseType, levels = c("Wood", "Congrete", "Semi-congrete"))
+imported$HouseType <- as.integer(imported$HouseType)
+
+imported$HouseType
+
+#Output: 1 2 2 1 3 3 1 3 3 2
+
+#3d
+
+imported$FatherOccupation <- factor(imported$FatherOccupation, levels = c(1,2,3), labels = c("Farmer", "Driver", "Others"))
+
+imported$FatherOccupation
+
+#3e
+
+femaleDriver <- imported[imported$Sex == 2 & imported$FatherOccupation == "Driver", c (3,4)]
+femaleDriver
+
+#3f
+
+greater_five <- imported[imported$SiblingsAtSchool >= 5,]
+greater_five
+
+
+#4
+# On this day, July 14 the negative sentiments has the most among the other sentiments. This means that some topics or events received negative sentiments during that day
+
+# On this day, July 15 the negative sentiment is still at the highest even if all the sentiments increased. This can be assumed that something occured that set off negative sentiments on that day.
+
+# On these days, July 17 and July 18 negative sentiments remains high and both neutral and positive sentiments stays similar
+
+# On the day, July 20 all sentiments got to their lowest even so there were still more negative sentiments among the others.This shows that during that day nothing happened.
+
+# On this day July 21, all sentiments increases, still the negative being at the top. This could mean that day something occured that set off negative responses of the people.
+
+# From this data, we could come to the conclusion that public sentiment is responsive to external factors and it also varies as the days go by.
+
+```
