@@ -67,7 +67,7 @@ new_order_data <- factor(factor_data,levels = c("East","West","North"))
 print(new_order_data)
 
 #5
-import_table <- read.table(file =  "/cloud/project/Worksheet#4/import_march.csv", header = TRUE, sep = ",")
+import_table <- read.table(file =  "/cloud/project/worksheet#4/import_march.csv", header = TRUE, sep = ",")
 
 import_table
 
@@ -151,48 +151,61 @@ if (first_test < 80) {
   paste("No test had an average score less than 80.")
 }
 
-# 8.d
-#Annie's Grade
-if (grade$Grade1[1] > 90) {
-  print(paste(grade$Name[1], "’s highest grade this semester is", grade$Grade1[1], ".", sep = ""))
-} else if (grade$Grade2[1] > 90) {
-  print(paste(grade$Name[1], "’s highest grade this semester is", grade$Grade2[1], ".", sep = ""))
-} else if (grade$Grade3[1] > 90) {
-  print(paste(grade$Name[1], "’s highest grade this semester is", grade$Grade3[1], ".", sep = ""))
-} else if (grade$Grade4[1] > 90) {
-  print(paste(grade$Name[1], "’s highest grade this semester is", grade$Grade4[1], ".", sep = ""))
+# Annie
+if (grade[1,2] > grade[1,3] && grade[1,2] > grade[1,4] && grade[1,2] > grade[1,5]) {
+  annieHighest <- grade[1,2]
+} else if (grade[1,3] > grade[1,4] && grade[1,3] > grade[1,5]) {
+  annieHighest <- grade[1,3]
+} else if (grade[1,4] > grade[1,5] && grade[1,2] > grade[1,5]) {
+  annieHighest <- grade[1,4]
+} else {
+  annieHighest <- grade[1,5]
 }
 
-#Thea's Grade
-if (grade$Grade1[2] > 90) {
-  print(paste(grade$Name[2], "’s highest grade this semester is", grade$Grade1[2], ".", sep = ""))
-} else if (grade$Grade2[2] > 90) {
-  print(paste(grade$Name[2], "’s highest grade this semester is", grade$Grade2[2], ".", sep = ""))
-} else if (grade$Grade3[2] > 90) {
-  print(paste(grade$Name[2], "’s highest grade this semester is", grade$Grade3[2], ".", sep = ""))
-} else if (grade$Grade4[2] > 90) {
-  print(paste(grade$Name[2], "’s highest grade this semester is", grade$Grade4[2], ".", sep = ""))
+
+# Thea
+if (grade[2,2] > grade[2,3] && grade[2,2] > grade[2,4] && grade[2,2] > grade[2,5]) {
+  theaHighest <- grade[2,2]
+} else if (grade[2,3] > grade[2,4] && grade[2,3] > grade[2,5]) {
+  theaHighest <- grade[2,3]
+} else if (grade[2,4] > grade[2,5] && grade[2,2] > grade[2,5]) {
+  theaHighest <- grade[2,4]
+} else {
+  theaHighest <- grade[2,5]
+}
+# Steve
+if (grade[3,2] > grade[3,3] && grade[3,2] >grade[3,4] && grade[3,2] > grade[3,5]) {
+  steveHighest <- grade[3,2]
+} else if (grade[3,3] > grade[3,4] && grade[3,3] >grade[3,5]) {
+  steveHighest <- grade[2,3]
+} else if (grade[3,4] > grade[3,5] && grade[3,2] > grade[3,5]) {
+  steveHighest <- grade[3,4]
+} else {
+  steveHighest <- grade[3,5]
 }
 
-#Steve's Grade
-if (grade$Grade1[3] > 90) {
-  print(paste(grade$Name[3], "’s highest grade this semester is", grade$Grade1[3], ".", sep = ""))
-} else if (grade$Grade2[3] > 90) {
-  print(paste(grade$Name[3], "’s highest grade this semester is", grade$Grade2[3], ".", sep = ""))
-} else if (grade$Grade3[3] > 90) {
-  print(paste(grade$Name[3], "’s highest grade this semester is", grade$Grade3[3], ".", sep = ""))
-} else if (grade$Grade4[3] > 90) {
-  print(paste(grade$Name[3], "’s highest grade this semester is", grade$Grade4[3], ".", sep = ""))
+# Hanna
+if (grade[4,2] > grade[4,3] && grade[4,2] > grade[4,4] && grade[4,2] > grade[4,5]) {
+  hannaHighest <- grade[4,2]
+} else if (grade[4,3] > grade[4,4] && grade[4,3] > grade[4,5]) {
+  hannaHighest <- grade[2,3]
+} else if (grade[4,4] > grade[4,5] && grade[4,2] > grade[4,5]) {
+  hannaHighest <- grade[4,4]
+} else {
+  hannaHighest <- grade[4,5]
 }
 
-#Hanna's Grade
-if (grade$Grade1[4] > 100) {
-  print(paste(grade$Name[4], "’s highest grade this semester is", grade$Grade1[4], ".", sep = ""))
-} else if (grade$Grade2[4] >= 100) {
-  print(paste(grade$Name[4], "’s highest grade this semester is", grade$Grade2[4], ".", sep = ""))
-} else if (grade$Grade3[4] >= 100) {
-  print(paste(grade$Name[4], "’s highest grade this semester is", grade$Grade3[4], ".", sep = ""))
-} else if (grade$Grade4[4] >= 100) {
-  print(paste(grade$Name[4], "’s highest grade this semester is ", grade$Grade4[4], ".", sep = ""))
+grade$HighestGrades <- c(annieHighest, theaHighest, steveHighest, hannaHighest)
+
+
+above90 <- grade[grade$HighestGrades > 90,]
+above90
+
+if (nrow(above90) > 0) {
+  paste(above90$Name, "'s highest grade this semester is", above90$HighestGrade)
+} else {
+  paste("No students have an average math score over 90.")
 }
+
+
 ```
