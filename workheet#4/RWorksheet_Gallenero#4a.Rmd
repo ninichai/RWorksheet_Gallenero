@@ -7,6 +7,7 @@ date: "2023-10-25"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 ```{r}
 #1. Create a data frame
 df_shoe <- data.frame(
